@@ -1,0 +1,47 @@
+/* 容器：取消 absolute，改用 margin 居中 */
+.stats-container {
+  display: grid;
+  position: absolute;
+  /* 这里的 minmax(280px, 1fr) 保证了卡片最小 280px，剩下的空间平分 */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  top: 10%;
+  width: 80%; /* 宽度占 90% */
+  left: 10%;
+  max-width: 1200px; /* 最大不超过 1200px */
+  margin: 100px auto; /* 上下 100px，左右自动居中 */
+  padding: 20px;
+}
+
+/* 卡片样式优化 */
+.stats-item {
+  width: 100%;
+  height: auto; /* 既然内容多，高度就让它自适应，不要写死 250px */
+  min-height: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 按钮样式：固定在页面左上角，不随滚动条乱跑 */
+.back-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 999;
+}
+
+/* 卡片内部内容的间距调整 */
+.ant-card-meta-description div {
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 13px;
+}
+
+/* 强制让 Card 的 title 支持多行或省略，防止过长撑爆卡片 */
+.ant-card-head-title {
+  white-space: normal !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
