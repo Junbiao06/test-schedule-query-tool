@@ -10,7 +10,11 @@ const Cards = () => {
 
   return (
     <>
-      <div className="cards-info">共匹配到{selectedClasses.length}个结果</div>
+      <div className="cards-info">
+        {selectedClasses.length > 0
+          ? `共匹配到${selectedClasses.length}个结果`
+          : "暂无匹配结果"}
+      </div>
       <div className="cards-container">
         {selectedClasses.map((c, i) => (
           <Link to={`/class/${c}`} key={i}>

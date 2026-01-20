@@ -34,58 +34,61 @@ const TestStats = ({ classId }) => {
         返回
       </Button>
       <div className="stats-container">
-        {filteredData.map((item, i) => {
-          const {
-            courseName,
-            campus,
-            examTime,
-            classroom,
-            courseCode,
-            teacher,
-            studentCount,
-          } = item;
-          return (
-            <Card
-              key={i}
-              className="stats-item"
-              hoverable
-              title={
-                <Space>
-                  <Tag color="volcano">{campus}</Tag>
-                  <Text strong>{classId}</Text>
-                </Space>
-              }
-            >
-              <div className="card-content">
-                <Title level={5} className="course-title">
-                  🧸 {courseName}
-                </Title>
-                <div className="info-list">
-                  <div className="info-row">
-                    <HomeOutlined /> <Text type="secondary">教室:</Text>
-                    <Text strong>{classroom}</Text>
-                  </div>
-                  <div className="info-row">
-                    <ClockCircleOutlined /> <Text type="secondary">时间:</Text>
-                    <Text>{examTime}</Text>
-                  </div>
-                  <div className="info-row">
-                    <TeamOutlined /> <Text type="secondary">人数:</Text>
-                    <Text>{studentCount}</Text>
-                  </div>
-                  <div className="info-row">
-                    <UserOutlined /> <Text type="secondary">老师:</Text>
-                    <Text>{teacher}</Text>
-                  </div>
-                  <div className="info-row">
-                    <NumberOutlined /> <Text type="secondary">代码:</Text>
-                    <Text code>{courseCode}</Text>
+        {filteredData
+          .sort((a, b) => a.examTime.localeCompare(b.examTime))
+          .map((item, i) => {
+            const {
+              courseName,
+              campus,
+              examTime,
+              classroom,
+              courseCode,
+              teacher,
+              studentCount,
+            } = item;
+            return (
+              <Card
+                key={i}
+                className="stats-item"
+                hoverable
+                title={
+                  <Space>
+                    <Tag color="volcano">{campus}</Tag>
+                    <Text strong>{classId}</Text>
+                  </Space>
+                }
+              >
+                <div className="card-content">
+                  <Title level={5} className="course-title">
+                    🧸 {courseName}
+                  </Title>
+                  <div className="info-list">
+                    <div className="info-row">
+                      <HomeOutlined /> <Text type="secondary">教室:</Text>
+                      <Text strong>{classroom}</Text>
+                    </div>
+                    <div className="info-row">
+                      <ClockCircleOutlined />{" "}
+                      <Text type="secondary">时间:</Text>
+                      <Text>{examTime}</Text>
+                    </div>
+                    <div className="info-row">
+                      <TeamOutlined /> <Text type="secondary">人数:</Text>
+                      <Text>{studentCount}</Text>
+                    </div>
+                    <div className="info-row">
+                      <UserOutlined /> <Text type="secondary">老师:</Text>
+                      <Text>{teacher}</Text>
+                    </div>
+                    <div className="info-row">
+                      <NumberOutlined /> <Text type="secondary">代码:</Text>
+                      <Text code>{courseCode}</Text>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
-          );
-        })}
+              </Card>
+            );
+          })}
       </div>
 
       <FloatButton.Group

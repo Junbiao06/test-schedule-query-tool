@@ -1,24 +1,43 @@
 .cards-info {
   position: absolute;
-  top: 20%;
-  width: 40%;
-  left: 30%;
+  top: 20%; /* 调整搜索框位置，更靠上 */
+  width: 100%; /* 居中对齐更方便 */
   text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 10;
   /* background-color: aqua; */
 }
 
 .cards-container {
   position: absolute;
-  top: 25%;
-  width: 70%;
+  top: 30%; /* 卡片容器在搜索框下方 */
+  width: 70%; /* 左右留空边距 */
   left: 15%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15%, 1fr));
-  column-gap: 5%;
-  row-gap: 40px;
+  grid-template-columns: repeat(5, 1fr); /* 默认电脑端 5 列 */
+  gap: 40px; /* 行列间距 */
   /* background-color: antiquewhite; */
 }
 
 .cards-container .button {
   height: 70px;
+  width: 100%;
+}
+
+/* 平板屏幕 */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 手机屏幕 */
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 或 repeat(2,1fr) 根据你想显示1-2列 */
+  }
 }
